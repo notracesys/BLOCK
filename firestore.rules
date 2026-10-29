@@ -1,0 +1,40 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // HELPERS SIMPLES E EFICAZES
+    function isAuth() { return request.auth != null; }
+    function userData() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function isOwner() { return isAuth() && (userData().role == 'owner' || userData().isAdmin == true); }
+    function isManager() { return isAuth() && (userData().role == 'manager'); }
+
+    // PROTEÇÃO POR COLEÇÃO
+    match /users/{userId} {
+      allow get: if isAuth() && (request.auth.uid == userId || isOwner());
+      allow list: if isOwner();
+      allow write: if isOwner();
+    }
+    
+    match /settings/{docId} {
+      allow read: if isAuth();
+      allow write: if isOwner();
+    }
+    
+    match /influencers/{influencerId} {
+      allow read: if isOwner() || (isManager() && resource.data.managerId == request.auth.uid);
+      allow list: if isOwner() || isManager();
+      allow write: if isOwner() || isManager();
+    }
+    
+    match /logs/{logId} {
+      allow read: if isOwner();
+      allow create: if isAuth();
+    }
+
+    // BLOQUEIO PADRÃO
+    match /{document=**} {
+      allow read, write: if isOwner();
+    }
+  }
+}

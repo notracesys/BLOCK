@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#08090d"><title>Testar gameplay — BlockCash</title>
+  <link rel="icon" href="assets/blockcash.png"><link rel="stylesheet" href="src/css/gameplay.css"><link rel="stylesheet" href="src/css/gameplay-brand.css">
+</head><body>
+  <main class="game-shell">
+    <header class="game-head"><a href="index.html" class="back" aria-label="Voltar para a página inicial">←</a><img src="assets/blockcash.png" alt="BlockCash"><span class="demo">Modo teste</span></header>
+    <section class="stake-row" aria-label="Informações demonstrativas">
+      <article><small>Aposta demo</small><strong id="betValue">R$ 10,00</strong></article>
+      <article><small>Prêmio máximo</small><strong id="maxWinValue">R$ 50,00</strong></article>
+    </section>
+    <section class="prize"><small>Progresso da partida</small><strong id="prizeValue">R$ 0,00</strong><div id="winProgress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="winProgressBar"></i></div></section>
+    <section class="boardWrap"><div class="boardGrid"><canvas id="gameBoard" aria-label="Tabuleiro 8 por 8"></canvas></div></section>
+    <section class="pieces" id="shapesList" aria-label="Peças disponíveis"></section>
+    <p class="help">Arraste uma peça para o tabuleiro e complete linhas.</p>
+  </main>
+  <button class="sound" id="soundBtn" aria-label="Desativar som" aria-pressed="true">♪</button>
+  <div class="modal-overlay" id="gameOverModal"><div class="modal-content"><h2>Fim de jogo!</h2><p>Não há mais encaixes disponíveis.</p><button id="restartBtn">Jogar de novo</button><a href="index.html">Voltar para a página</a></div></div>
+  <script type="module" src="src/js/main.js"></script>
+</body></html>

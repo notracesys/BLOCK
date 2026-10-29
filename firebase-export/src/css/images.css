@@ -1,0 +1,241 @@
+/* Image-specific layout: supplied card artwork must remain fully visible. */
+.media {
+  aspect-ratio: auto;
+  line-height: 0;
+}
+
+.media img,
+.media.game img,
+.media.board.a img,
+.media.board.b img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
+}
+
+.media::after {
+  background: linear-gradient(180deg, transparent 72%, rgba(12, 5, 6, .2));
+  box-shadow: none;
+}
+
+.media b {
+  line-height: normal;
+}
+
+.blockcash-btn {
+  position: relative;
+  min-height: 58px;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 17px;
+  border: 1px solid rgba(255, 220, 105, .92);
+  box-shadow: 0 9px 22px rgba(255, 145, 0, .3), inset 0 2px 0 rgba(255, 255, 255, .45), inset 0 -5px 10px rgba(142, 61, 0, .25);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+.blockcash-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, .68), transparent 46%);
+  pointer-events: none;
+}
+
+.blockcash-btn::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.btn-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 1px rgba(255, 255, 255, .16);
+}
+
+.btn-arrow {
+  display: inline-block;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.btn-shine {
+  position: absolute;
+  top: -32%;
+  left: -42%;
+  z-index: 1;
+  width: 30%;
+  height: 166%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .58), transparent);
+  transform: skewX(-24deg);
+  animation: buttonShine 3.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blockcash-btn.gold { animation: goldPulse 3s ease-in-out infinite; }
+
+.blockcash-btn.test {
+  color: #fff8ef;
+  background: linear-gradient(180deg, #e73b29 0%, #a91619 48%, #650b10 100%);
+  border-color: rgba(255, 196, 63, .84);
+  box-shadow: 0 9px 22px rgba(197, 30, 30, .3), inset 0 2px 0 rgba(255, 188, 142, .28), inset 0 -5px 10px rgba(50, 0, 4, .32);
+}
+
+.blockcash-btn.test::before { background: radial-gradient(circle at 50% -18%, rgba(255, 174, 110, .42), transparent 48%); }
+.blockcash-btn.test .btn-shine { background: linear-gradient(90deg, transparent, rgba(255, 213, 154, .38), transparent); animation-delay: .65s; }
+.play-icon { width: 25px; height: 25px; display: grid; place-items: center; padding-left: 2px; border-radius: 50%; color: #4a1800; background: linear-gradient(#ffe778, #ffad10); box-shadow: 0 3px 9px rgba(0, 0, 0, .28); font-size: .63rem; font-style: normal; }
+
+.blockcash-btn.wine {
+  background: linear-gradient(180deg, #8f1d1b 0%, #621012 52%, #3b080b 100%);
+  border-color: rgba(255, 191, 31, .65);
+  box-shadow: 0 8px 18px rgba(91, 17, 17, .35), inset 0 2px 0 rgba(255, 214, 178, .16), inset 0 -5px 10px rgba(20, 0, 2, .3);
+}
+
+.blockcash-btn.wine .btn-shine { opacity: .48; animation-delay: 1.25s; }
+.blockcash-btn.wine .btn-arrow, .blockcash-btn.test .btn-arrow { color: #ffd95a; }
+
+@media (hover: hover) {
+  .blockcash-btn:hover { transform: translateY(-2px) scale(1.012); filter: saturate(1.08); }
+  .blockcash-btn:hover .btn-arrow { transform: translateX(4px); }
+}
+
+.blockcash-btn:active { transform: translateY(1px) scale(.985); filter: brightness(.97); }
+
+@keyframes buttonShine {
+  0%, 18% { left: -42%; }
+  64%, 100% { left: 126%; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 9px 22px rgba(255, 145, 0, .28), 0 0 0 rgba(255, 190, 30, 0), inset 0 2px 0 rgba(255, 255, 255, .45), inset 0 -5px 10px rgba(142, 61, 0, .25); }
+  50% { box-shadow: 0 11px 28px rgba(255, 145, 0, .38), 0 0 21px rgba(255, 190, 30, .14), inset 0 2px 0 rgba(255, 255, 255, .48), inset 0 -5px 10px rgba(142, 61, 0, .25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blockcash-btn, .btn-shine { animation: none !important; }
+}
+
+/* Premium CTA composition */
+.blockcash-btn {
+  min-height: 64px;
+  padding: 0 13px;
+  border-radius: 18px;
+}
+
+.blockcash-btn::after {
+  inset: 2px;
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, .3);
+}
+
+.blockcash-btn .btn-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 34px;
+  gap: 11px;
+  text-align: left;
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  font-style: normal;
+  color: #fff8ef;
+  background: linear-gradient(145deg, rgba(74, 26, 0, .82), rgba(30, 10, 0, .95));
+  border: 1px solid rgba(255, 255, 255, .24);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .14), 0 4px 9px rgba(71, 24, 0, .2);
+}
+
+.btn-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.btn-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  line-height: 1.05;
+}
+
+.btn-copy > b {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .92rem;
+  font-weight: 1000;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.btn-copy small {
+  overflow: hidden;
+  color: rgba(48, 25, 0, .72);
+  font-size: .61rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.blockcash-btn .btn-arrow {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  justify-self: end;
+  border-radius: 50%;
+  color: #3a1b00;
+  background: rgba(255, 255, 255, .2);
+  border: 1px solid rgba(99, 43, 0, .2);
+}
+
+.blockcash-btn .btn-arrow img { width: 17px; height: 17px; }
+
+.blockcash-btn.wine .btn-icon {
+  color: #3e1000;
+  background: linear-gradient(145deg, #ffe477, #e99708);
+  border-color: rgba(255, 238, 157, .72);
+}
+
+.blockcash-btn.wine .btn-copy small { color: rgba(255, 235, 211, .68); }
+.blockcash-btn.wine .btn-arrow { color: #ffd95a; background: rgba(255, 191, 31, .09); border-color: rgba(255, 191, 31, .26); }
+
+.blockcash-btn .btn-shine {
+  top: -80%;
+  left: -55%;
+  width: 18%;
+  height: 260%;
+  opacity: .34;
+  animation-duration: 4.5s;
+}
+
+.blockcash-btn:focus-visible {
+  outline: 3px solid rgba(255, 217, 90, .42);
+  outline-offset: 3px;
+}
+
+@media (max-width: 374px) {
+  .blockcash-btn { padding-inline: 10px; }
+  .blockcash-btn .btn-content { grid-template-columns: 35px minmax(0, 1fr) 31px; gap: 8px; }
+  .btn-icon { width: 35px; height: 35px; }
+  .btn-copy > b { font-size: .84rem; }
+  .btn-copy small { font-size: .57rem; }
+}

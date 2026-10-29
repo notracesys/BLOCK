@@ -1,0 +1,72 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Dados da conta do usuário e controle de permissões",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["owner", "manager", "user"], "default": "user" },
+        "active": { "type": "boolean", "default": true },
+        "isAdmin": { "type": "boolean", "default": false },
+        "balance": { "type": "number", "default": 0 },
+        "managerId": { "type": "string", "description": "ID do gerente responsável por este usuário" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "ManagerProfile": {
+      "title": "ManagerProfile",
+      "description": "Dados de performance e métricas de um gerente",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "active": { "type": "boolean" },
+        "commissionRate": { "type": "number" },
+        "influencersCount": { "type": "number" },
+        "totalNetworkVolume": { "type": "number" },
+        "createdAt": { "type": "string" }
+      }
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Registro de ações administrativas",
+      "type": "object",
+      "properties": {
+        "actorUid": { "type": "string" },
+        "action": { "type": "string" },
+        "targetUid": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "details": { "type": "string" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Perfis de usuários, gerentes e donos"
+    },
+    "managers/{uid}": {
+      "schema": "ManagerProfile",
+      "description": "Métricas detalhadas de gerentes"
+    },
+    "influencers/{uid}": {
+      "schema": "InfluencerProfile",
+      "description": "Afiliados vinculados a gerentes"
+    },
+    "auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Logs de auditoria master"
+    },
+    "settings/game": {
+      "schema": "GlobalSettings",
+      "description": "Configurações globais do sistema"
+    }
+  }
+}

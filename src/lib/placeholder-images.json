@@ -1,0 +1,40 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-gameplay",
+      "description": "Demonstração da interface do jogo Block Cash",
+      "imageUrl": "/hero.webp",
+      "imageHint": "game screen block cash"
+    },
+    {
+      "id": "how-to-1",
+      "description": "Depósito PIX facilitado",
+      "imageUrl": "/card1.webp",
+      "imageHint": "mobile payment app"
+    },
+    {
+      "id": "how-to-2",
+      "description": "Seleção de entrada de jogo",
+      "imageUrl": "/card2.webp",
+      "imageHint": "game stake selection"
+    },
+    {
+      "id": "how-to-3",
+      "description": "Jogabilidade 8x8 blocks",
+      "imageUrl": "/card3.png",
+      "imageHint": "block puzzle gameplay"
+    },
+    {
+      "id": "how-to-4",
+      "description": "Saque PIX imediato",
+      "imageUrl": "/card4.webp",
+      "imageHint": "successful withdrawal"
+    },
+    {
+      "id": "affiliate-banner",
+      "description": "Banner da seção de indicações e afiliados",
+      "imageUrl": "/indicar.webp",
+      "imageHint": "affiliate marketing banner"
+    }
+  ]
+}
